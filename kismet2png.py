@@ -1,14 +1,13 @@
-import pyodbc
-cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER=SQLSRV01;DATABASE=DATABASE;UID=USER;PWD=PASSWORD')
-cursor = cnxn.cursor()
+#Process the Kismet into Csv
 
-#edit .kismet into .csv to be readable
-def parse_csv(filename):
-  destmac = []
-  lat = []
-  lon = []
-  signal = []
+def parse_kismet(filename):
+  sqlite3 filename
+  .headers on
+  .mode csv
+  .output data.csv
+  SELECT destmac, lat, lon, signal FROM packets
+  .quit
+
   
-  cursor.execute("SELECT destmac, lat, lon, signal FROM packets")
-  for row in cursor.fetchall():
-      print row
+
+
